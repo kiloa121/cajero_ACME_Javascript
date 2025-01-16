@@ -51,9 +51,6 @@ while (opc != "0") {
             
             break;
             
-
-
-
         case "2":
             let numero = prompt ("(2) Consignar dinero a una cuenta \n Desea realizar la transaccion mediante: \n (1) Cuenta    (2) Documento")
             alert("Datos de todos los usuarios:\n" + JSON.stringify(Array.from(usuarios.entries())), null, 1);            
@@ -101,25 +98,34 @@ while (opc != "0") {
                 })
             }
             break;
+        
         case "4":
             alert("(4) Pagar recibos \n Para retirar tiene que autentificarse primero")
             log = login(usuarios)
             if (log){
                 let tipoRecibo = prompt("¡Ha ingresado correctamente¡ \n ¿Que recibo desea pagar? \n (1) Energia    (2) Agua    (3) Luz")
                 let dineroARetirar = prompt("Cuanto dinero cuesta el recibo")
-                switch (tipoRecibo){
-                    case "1":
-                        
-
-                }
                 usuarios.forEach((cuenta, numCuenta)=>{
                     if (cuenta.saldo >= dineroARetirar){
                         cuenta.saldo -= parseInt(dineroARetirar)
                         alert("Dinero retirado con exito, su saldo actual es: " + cuenta.saldo)
+                        switch (tipoRecibo){
+                            case "1":
+                                alert("Cuenta de Energia pagada")
+                            case "2":
+                                alert("Cuenta de Agua pagada")
+                            case "3":
+                                alert("Cuenta de Lux pagada")
+                        }
                     }else{
                         alert("No tienes suficiente dinero")
                     }
-                })
+                })}
+        case "5":
+            alert("(5) Mostrar movimientos bancarios  \n Para mostrar su historial debe identificarse primero")
+            log = login(usuarios)
+            if (log) {
+                
             }
     }
 }
